@@ -6,8 +6,8 @@ import {
   StatusBar,
   View,
   StyleSheet,
-  MaskedViewIOS,
 } from 'react-native';
+import MaskedView from '@react-native-community/masked-view';
 
 type Props = {|
   +children: React.Node,
@@ -87,7 +87,7 @@ export default class Loader extends React.Component<Props, State> {
       <View style={styles.fullScreen}>
         <StatusBar animated={true} hidden={!this.state.animationDone} />
         {fullScreenBackgroundLayer}
-        <MaskedViewIOS
+        <MaskedView
           style={{ flex: 1 }}
           maskElement={
             <View style={styles.centeredFullScreen}>
@@ -102,7 +102,7 @@ export default class Loader extends React.Component<Props, State> {
           <Animated.View style={[opacityClearToVisible, appScale, { flex: 1 }]}>
             {this.props.children}
           </Animated.View>
-        </MaskedViewIOS>
+        </MaskedView>
       </View>
     );
   }
